@@ -5,6 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
+
   test:
     runs-on: ubuntu-latest
 
@@ -17,6 +18,12 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt pytest-html
+
+      - name: Check secrets are set
+        env:
+          key_id: ${{ secrets.KEY_ID }}
+          key_secret: ${{ secrets.KEY_SECRET }}
+        run: python -c "import os; print('key_id set:', bool(os.getenv('key_id'))); print('key_secret set:', bool(os.getenv('key_secret')))"
 
       - name: Run tests
         env:
