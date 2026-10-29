@@ -12,3 +12,6 @@ class ApiClient:
                             json=payload,timeout=10)
     def get(self,path):
         return self.session.get(url=f"{self.url}{path}",auth=(self.id,self.secret))
+    
+    def post_without_auth(self,path,payload):
+        return self.session.post(url=f"{self.url}{path}",json=payload)
