@@ -27,8 +27,8 @@ jobs:
 
       - name: Run tests
         env:
-          key_id: ${{ secrets.RAZORPAY_KEY_ID }}
-          key_secret: ${{ secrets.RAZORPAY_KEY_SECRET }}
+          key_id: ${{ secrets.KEY_ID }}
+          key_secret: ${{ secrets.KEY_SECRET }}
         run: pytest -v --html=report.html --self-contained-html
 
       - name: Upload report
